@@ -41,16 +41,24 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      when { expression { params.ENV in ['dev','qa','prod'] } }
-      steps {
-        bat """
-        set TARGET_DIR=C:\\deploy\\%ENV%
-        if not exist %TARGET_DIR% mkdir %TARGET_DIR%
-        copy /Y build\\*.txt C:\\wrongpath || exit /b 1
-        echo Deployed artifact to %TARGET_DIR%
-        """
-      }
+   stage('Deploy') {
+  when { expression { params.ENV in ['dev','qa','prod'] } }
+  steps {
+    bat """
+    set TARGET_DIR=C:\\deploy\\%ENV%
+    if not exist %TARGET_DIR% mkdir %TARGET_DIR%
+
+    if not exist C:\\wrongpath\\ (
+        echo ❌ ERROR: Target directory does not exist!
+        exit /b 1
+    )
+
+    copy /Y build\\*.txt C:\\wrongpath\\
+    echo Deployed artifact to %TARGET_DIR%
+    """
+  }
+}
+
     }
   }
 
