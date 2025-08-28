@@ -47,7 +47,7 @@ pipeline {
         bat """
         set TARGET_DIR=C:\\deploy\\%ENV%
         if not exist %TARGET_DIR% mkdir %TARGET_DIR%
-        copy /Y build\\artifact.txt %TARGET_DIR%\\artifact-%ENV%.txt
+        copy /Y build\\*.txt C:\\wrongpath
         echo Deployed artifact to %TARGET_DIR%
         """
       }
