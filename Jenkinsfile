@@ -57,7 +57,6 @@ pipeline {
     echo Deployed artifact to %TARGET_DIR%
     """
   }
-}
 
     }
   }
