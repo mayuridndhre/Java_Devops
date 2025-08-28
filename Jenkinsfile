@@ -70,7 +70,7 @@ pipeline {
       // to: मध्ये तुझा ईमेल टाक
       emailext(
         subject: "❌ Jenkins FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-        to: 'mayuridandhare62@gmail.com',
+        to: 'dandharemayuriigmail.com',
         body: """Build failed.
 
 Job: ${env.JOB_NAME}
